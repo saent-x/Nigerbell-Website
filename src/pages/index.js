@@ -1,3 +1,27 @@
 import React from "react"
 
-export default () => <div>Hello world!</div>
+export default function({ data }) {
+  console.log(data)
+  return <div>Hello world!</div>
+}
+
+export const query = graphql`
+  {
+    allFile(
+      filter: {
+        sourceInstanceName: { eq: "data" }
+        name: { eq: "specializations" }
+      }
+    ) {
+      edges {
+        node {
+          childMarkdownRemark {
+            frontmatter {
+              specializations
+            }
+          }
+        }
+      }
+    }
+  }
+`

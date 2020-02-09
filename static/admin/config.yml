@@ -9,7 +9,7 @@ public_folder: /img
 collections:
   - name: "blog"
     label: "Blog" 
-    folder: "src/pages/blog"
+    folder: "src/data/blog"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     editor:
@@ -23,7 +23,7 @@ collections:
 
   - name: "product"
     label: "Product"
-    folder: "src/pages/products"
+    folder: "src/data/products"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     editor:
@@ -36,7 +36,7 @@ collections:
   - name: "pages"
     label: "Pages"
     files: 
-      - file: "src/pages/index.md"
+      - file: "src/data/index.md"
         label: "Homepage"
         name: "homepage"
         editor:
@@ -54,7 +54,7 @@ collections:
               {label: "Content", name: "content", widget: "string"}]
           }
 
-      - file: "src/pages/specializations/index.md"
+      - file: "src/data/specializations.md"
         label: "Specializations"
         name: "specializations"
         editor:
@@ -67,7 +67,7 @@ collections:
             field: {label: "Name", name: "name", widget: "string"}
           }
 
-      - file: "src/pages/aboutpage/index.md"
+      - file: "src/data/aboutpage.md"
         label: "AboutPage"
         name: "aboutpage"
         editor:
@@ -78,7 +78,7 @@ collections:
           - {label: "Title", name: "title", widget: "string"}
           - {label: "Content", name: "content", widget: "string"}
 
-      - file: "src/pages/partners/index.md"
+      - file: "src/data/partners.md"
         label: "Partners"
         name: "partners"
         editor:
