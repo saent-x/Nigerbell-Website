@@ -1,0 +1,91 @@
+backend:
+  name: git-gateway
+  branch: master # Branch to update (optional; defaults to master)
+
+publish_mode: editorial_workflow
+media_folder: "images/uploads" # Media files will be stored in the repo under images/uploads
+public_folder: "/images/uploads" # The src attribute for uploaded media will begin with /images/uploads
+
+collections:
+  - name: "blogposts" # Used in routes, e.g., /admin/collections/blog
+    label: "BlogPosts" # Used in the UI
+    folder: "src/pages/blogposts" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    editor:
+     preview: false
+    fields: # The fields for each document, usually in front matter
+      - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "product"
+    label: "Product"
+    folder: "src/pages/products"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+     preview: false
+    fields: 
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Content", name: "content", widget: "string"}
+      - {label: "Image", name: "image", widget: "image"}
+      
+  - name: "pages"
+    label: "Pages"
+    files: 
+      - name: "Homepage"
+        label: "homepage"
+        file: "src/pages/index.md"
+        editor:
+          preview: false
+        fields: 
+          - {label: "Image", name: "image", widget: "image"}
+          - {label: "Author", name: "author", widget: "string"}
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Content", name: "content", widget: "string"}
+          - {
+            label: "HomeJumbo", name: "homejumbo", widget: "object",
+            fields:
+              - {label: "Image", name: "image", widget: "image"}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Content", name: "content", widget: "string"}
+          }
+
+      - name: "specializations"
+        label: "Specializations"
+        file: "src/pages/specializations/index.md"
+        editor:
+          preview: false
+        fields: 
+          - {
+            label: "Specializations",
+            name: "specializations",
+            widget: "list",
+            field: {
+              - {label: "Name", name: "name", widget: "string"}
+            }
+          }
+
+      - name: "aboutpage"
+        label: "AboutPage"
+        file: "src/pages/aboutpage/index.md"
+        editor:
+          preview: false
+        fields: 
+          - {label: "Image", name: "image", widget: "image"}
+          - {label: "Author", name: "author", widget: "string"}
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Content", name: "content", widget: "string"}
+
+      - name: "partners"
+        label: "Partners"
+        folder: "src/pages/partners/index.md"
+        editor:
+          preview: false
+        fields: 
+          - {label: "Image", name: "image", widget: "image"}
+          - {label: "Title", name: "title", widget: "string"}
+      
