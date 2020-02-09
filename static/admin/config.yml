@@ -34,60 +34,66 @@ collections:
       - { label: "Content", name: "content", widget: "string" }
       - { label: "Image", name: "image", widget: "image" }
 
-  - name: "pages"
-    label: "Pages"
-    files:
-      - file: "src/pages/index.md"
-        label: "Homepage"
-        name: "homepage"
-        editor:
-          preview: false
-        fields:
-          - { label: "Image", name: "image", widget: "image" }
-          - { label: "Author", name: "author", widget: "string" }
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Content", name: "content", widget: "string" }
-          - {
-              label: "HomeJumbo",
-              name: "homejumbo",
-              widget: "object",
-              fields:
-                [
-                  { label: "Image", name: "image", widget: "image" },
-                  { label: "Title", name: "title", widget: "string" },
-                  { label: "Content", name: "content", widget: "string" },
-                ],
-            }
+  - name: "homepage"
+    folder: "src/pages/home"
+    label: "Homepage"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Content", name: "content", widget: "string" }
+      - {
+          label: "HomeJumbo",
+          name: "homejumbo",
+          widget: "object",
+          fields:
+            [
+              { label: "Image", name: "image", widget: "image" },
+              { label: "Title", name: "title", widget: "string" },
+              { label: "Content", name: "content", widget: "string" },
+            ],
+        }
 
-      - file: "src/pages/specializations/index.md"
-        label: "Specializations"
-        name: "specializations"
-        editor:
-          preview: false
-        fields:
-          - {
-              label: "Specializations",
-              name: "specializations",
-              widget: "list",
-              field: { label: "Name", name: "name", widget: "string" },
-            }
+  - name: "specializations"
+    folder: "src/pages/specializations"
+    label: "Specializations"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Specializations",
+          name: "specializations",
+          widget: "list",
+          field: { label: "Name", name: "name", widget: "string" },
+        }
 
-      - file: "src/pages/aboutpage/index.md"
-        label: "AboutPage"
-        name: "aboutpage"
-        editor:
-          preview: false
-        fields:
-          - { label: "Image", name: "image", widget: "image" }
-          - { label: "Author", name: "author", widget: "string" }
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Content", name: "content", widget: "string" }
+  - name: "aboutpage"
+    folder: "src/pages/aboutpage"
+    label: "AboutPage"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Content", name: "content", widget: "string" }
 
-      - file: "src/pages/partners/index.md"
-        label: "Partners"
-        name: "partners"
-        editor:
-          preview: false
-        fields:
-          - { label: "Image", name: "image", widget: "image" }
-          - { label: "Title", name: "title", widget: "string" }
+  - name: "partners"
+    folder: "src/pages/partners"
+    label: "Partners"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Title", name: "title", widget: "string" }
