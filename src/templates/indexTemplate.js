@@ -11,7 +11,7 @@ export default class IndexTemplate extends React.Component {
   }
 }
 
-export const indexPageQuery = graphql`
+// export const query = graphql`
     
 
-`;
+// `;
