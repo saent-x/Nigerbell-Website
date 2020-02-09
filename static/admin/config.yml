@@ -1,6 +1,7 @@
 backend:
   name: git-gateway
   branch: master # Branch to update (optional; defaults to master)
+  repo: Torsxperience/Nigerbell-Website
 
 publish_mode: editorial_workflow
 media_folder: "images/uploads" # Media files will be stored in the repo under images/uploads
@@ -13,13 +14,13 @@ collections:
     create: true # Allow users to create new documents in this collection
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     editor:
-     preview: false
+      preview: false
     fields: # The fields for each document, usually in front matter
-      - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Featured Image", name: "thumbnail", widget: "image"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - { label: "Layout", name: "layout", widget: "hidden", default: "blog" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Featured Image", name: "thumbnail", widget: "image" }
+      - { label: "Body", name: "body", widget: "markdown" }
 
   - name: "product"
     label: "Product"
@@ -27,65 +28,66 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     editor:
-     preview: false
-    fields: 
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Content", name: "content", widget: "string"}
-      - {label: "Image", name: "image", widget: "image"}
-      
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Content", name: "content", widget: "string" }
+      - { label: "Image", name: "image", widget: "image" }
+
   - name: "pages"
     label: "Pages"
-    files: 
-      - name: "Homepage"
-        label: "homepage"
-        file: "src/pages/index.md"
+    files:
+      - file: "src/pages/index.md"
+        label: "Homepage"
+        name: "homepage"
         editor:
           preview: false
-        fields: 
-          - {label: "Image", name: "image", widget: "image"}
-          - {label: "Author", name: "author", widget: "string"}
-          - {label: "Title", name: "title", widget: "string"}
-          - {label: "Content", name: "content", widget: "string"}
+        fields:
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Author", name: "author", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Content", name: "content", widget: "string" }
           - {
-            label: "HomeJumbo", name: "homejumbo", widget: "object",
-            fields:
-              - {label: "Image", name: "image", widget: "image"}
-              - {label: "Title", name: "title", widget: "string"}
-              - {label: "Content", name: "content", widget: "string"}
-          }
-
-      - name: "specializations"
-        label: "Specializations"
-        file: "src/pages/specializations/index.md"
-        editor:
-          preview: false
-        fields: 
-          - {
-            label: "Specializations",
-            name: "specializations",
-            widget: "list",
-            field: {
-              - {label: "Name", name: "name", widget: "string"}
+              label: "HomeJumbo",
+              name: "homejumbo",
+              widget: "object",
+              fields:
+                [
+                  { label: "Image", name: "image", widget: "image" },
+                  { label: "Title", name: "title", widget: "string" },
+                  { label: "Content", name: "content", widget: "string" },
+                ],
             }
-          }
 
-      - name: "aboutpage"
+      - file: "src/pages/specializations/index.md"
+        label: "Specializations"
+        name: "specializations"
+        editor:
+          preview: false
+        fields:
+          - {
+              label: "Specializations",
+              name: "specializations",
+              widget: "list",
+              field: { label: "Name", name: "name", widget: "string" },
+            }
+
+      - file: "src/pages/aboutpage/index.md"
         label: "AboutPage"
-        file: "src/pages/aboutpage/index.md"
+        name: "aboutpage"
         editor:
           preview: false
-        fields: 
-          - {label: "Image", name: "image", widget: "image"}
-          - {label: "Author", name: "author", widget: "string"}
-          - {label: "Title", name: "title", widget: "string"}
-          - {label: "Content", name: "content", widget: "string"}
+        fields:
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Author", name: "author", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Content", name: "content", widget: "string" }
 
-      - name: "partners"
+      - file: "src/pages/partners/index.md"
         label: "Partners"
-        folder: "src/pages/partners/index.md"
+        name: "partners"
         editor:
           preview: false
-        fields: 
-          - {label: "Image", name: "image", widget: "image"}
-          - {label: "Title", name: "title", widget: "string"}
-      
+        fields:
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Title", name: "title", widget: "string" }
