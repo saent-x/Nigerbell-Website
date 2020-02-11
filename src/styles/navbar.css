@@ -1,0 +1,67 @@
+.ant-menu.ant-menu-dark .ant-menu-item-selected,
+.ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
+  background-color: #f0f2f5 !important;
+  color: black !important;
+}
+
+.ant-menu-dark,
+.ant-menu-dark .ant-menu-sub {
+  background-color: black !important;
+}
+
+.nav-logo {
+  display: flex;
+  flex-direction: row;
+  height: 45px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 450px;
+  background: #364d79;
+  overflow: hidden;
+}
+
+.ant-carousel .slick-slide h3 {
+  color: #fff;
+}
+
+.nav-brand {
+  font-family: "Open Sans", sans-serif;
+
+  width: 150px;
+  margin-left: 10px;
+  color: white;
+  font-size: 17px;
+  margin-bottom: 4px;
+  cursor: pointer;
+  word-wrap: break-word;
+}
+
+.search-collapse-nav {
+  display: none !important;
+}
+
+.collapse-nav {
+  width: 50%;
+}
+
+.selected-link:focus {
+  color: black !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .collapse-nav {
+    width: 10px;
+  }
+  .hide-search-nav {
+    display: none !important;
+  }
+
+  .search-collapse-nav {
+    display: inline !important;
+  }
+
+}
