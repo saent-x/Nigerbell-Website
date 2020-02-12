@@ -5,6 +5,7 @@ import Partners from "../components/partners"
 import MapArea from "../components/maparea"
 import Headline from "../components/headline"
 import Layout from "../components/layout"
+import { graphql } from "gatsby"
 
 const { Meta } = Card
 

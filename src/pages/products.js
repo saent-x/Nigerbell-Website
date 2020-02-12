@@ -10,7 +10,6 @@ export default ({ data }) => {
   const closeModal = () => this.setState({ ...this.state, visibleModal: false })
   
   const products = data.allMarkdownRemark.edges.map(edge => edge.node.frontmatter)
-  console.log(products)
 
   return (
     <Layout>

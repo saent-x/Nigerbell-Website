@@ -6,7 +6,8 @@ import { graphql } from "gatsby"
 
 export default ({ data }) => {
   const openPost = () => this.props.history.push("/post/1234")
-  const posts = []
+  const posts = data.allMarkdownRemark.edges.map(edge => edge.node.frontmatter)
+
   return (
     <Layout>
       <div className="blog-container">
@@ -20,15 +21,15 @@ export default ({ data }) => {
               hoverable
               className="blog-card"
               key={key}
-              cover={<img alt="post image" src={e.imageUrl} />}
-              onClick={() => OpenPost()}
+              cover={<img alt="post depiction" src={e.imageUrl} />}
+              onClick={() => openPost()}
             >
               <Card.Meta
                 avatar={
-                  <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                  <Avatar src={e.author} />
                 }
-                title={e.name}
-                description={e.description}
+                title={e.title}
+                // description={e.description}
               />
             </Card>
           ))}
@@ -57,8 +58,10 @@ export const query = graphql`
         node {
           frontmatter {
             title
-            image
-            content
+            date
+            thumbnail
+            body
+            author
           }
         }
       }
