@@ -17,7 +17,7 @@ collections:
     fields: # The fields for each document, usually in front matter
       - {label: "Key", name: "key", widget: "hidden", default: "blog"} // for easy querying
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "AuthorImage", name: "authorimage", widget: "string"}
+      - {label: "AuthorImage", name: "authorimage", widget: "image"}
       - {label: "Author", name: "author", widget: "string"}
       - {label: "Description", name: "description", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}

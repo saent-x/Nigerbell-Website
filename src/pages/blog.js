@@ -6,8 +6,8 @@ import { graphql } from "gatsby"
 
 export default ({ data }) => {
   const openPost = () => this.props.history.push("/post/1234")
-  const posts = data.allMarkdownRemark.edges.map(edge => edge.node.frontmatter)
-
+  //const posts = data.allMarkdownRemark.edges.map(edge => edge.node.frontmatter)
+  const posts = [];
   return (
     <Layout>
       <div className="blog-container">
@@ -51,20 +51,20 @@ export default ({ data }) => {
   )
 }
 
-export const query = graphql`
-  {
-    allMarkdownRemark(filter: { frontmatter: { key: { eq: "blog" } } }) {
-      edges {
-        node {
-          frontmatter {
-            title
-            date
-            thumbnail
-            body
-            author
-          }
-        }
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   {
+//     allMarkdownRemark(filter: { frontmatter: { key: { eq: "blog" } } }) {
+//       edges {
+//         node {
+//           frontmatter {
+//             title
+//             date
+//             thumbnail
+//             body
+//             author
+//           }
+//         }
+//       }
+//     }
+//   }
+// `
