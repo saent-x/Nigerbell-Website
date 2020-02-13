@@ -1,13 +1,11 @@
 import React from "react"
 import Layout from "../components/layout"
 import "../styles/blogpost.css"
-import { Comment, Avatar, Input } from "antd"
+import { Comment, Avatar } from "antd"
 import moment from "moment"
 import Markdown from "react-markdown"
 import CommentList from "../components/commentlist"
 import Editor from "../components/comment-editor"
-
-const { TextArea } = Input
 
 export default class BlogPost extends React.Component {
   constructor(props) {
@@ -120,7 +118,7 @@ A component by [Espen Hovlandsdal](https://espen.codes/)
             <Markdown source={this.state.post.content} />
             <br />
             <br />
-            <div style={{ width: "60%" }}>
+            {/* <div style={{ width: "60%" }}>
               {this.state.comments.length > 0 && (
                 <CommentList comments={this.state.comments} />
               )}
@@ -140,7 +138,7 @@ A component by [Espen Hovlandsdal](https://espen.codes/)
                   />
                 }
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </Layout>
