@@ -1,9 +1,15 @@
 ---
 key: blog
-title: gfygiuioip0pijhkugjftdheyuri7t8oyip9uo
+title: A Simple Blog Post
 authorimage: /img/logo.png
-author: Dr Van JJJJ
-description: ';.lkoijhugyftdrbgfdgfhyguhiojpokpojihugyftdrrgftgyhxfcgvhbjnlkm;l,'';.''/ ,.mmnb'
+author: Dr Barnabas Vangerwua
+tag:
+  - Hearing
+  - Speech
+description: >-
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies
+  facilisis feugiat. Sed ut lacus tellus. Phasellus ullamcorper molestie
+  ultrices. Quisque volutpat eros a velit.
 date: 2020-02-13T01:51:00.352Z
 thumbnail: /img/tem1.jpg
 ---
