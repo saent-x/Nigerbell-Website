@@ -2,7 +2,10 @@
 key: blog
 title: A Simple Blog Post
 authorimage: /img/logo.png
-author: Dr Van JJJJ
+author: Dr Barnabas Vangerwua
+tag:
+  - Hearing
+  - Speech
 description: >-
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies
   facilisis feugiat. Sed ut lacus tellus. Phasellus ullamcorper molestie
