@@ -4,56 +4,37 @@ import Layout from "../components/layout"
 import "../styles/about.css"
 
 export default ({ data }) => {
-  const obj = data.allFile.edges[0].node.childMarkdownRemark.frontmatter
+  const specializations =
+    data.fetchSpecializations.edges[0].node.childMarkdownRemark.frontmatter
+      .specializations
+  const aboutdata =
+    data.fetchAboutPage.edges[0].node.childMarkdownRemark.frontmatter
+
   return (
     <Layout>
       <div className="about-container">
         <div className="about-jumbo">
           <h1 className="about-jumbo-header">ABOUT US</h1>
           <div className="about-jumbo-profile">
-            <img
-              className="about-profile-img"
-              src={require("../assets/icons/logo.png")}
-            />
+            <img className="about-profile-img" src={aboutdata.image} />
             <div className="about-profile-name">
-              <p className="about-company-name">Nigerbell Group</p>
-              <p className="about-company-rep">Dr. Vangerwua Barnabas</p>
+              <p className="about-company-name">{aboutdata.author}</p>
+              <p className="about-company-rep">{aboutdata.jobtitle}</p>
             </div>
           </div>
         </div>
         <div className="about-content">
-          <p className="about-content-text">
-            <span className="about-first-letter">We</span> are hearing
-            healthcare experts specializing in the prevention, identification,
-            assessment, treatment and rehabilitation of hearing difficulties in
-            both adults and children. We provide hearing assessments, and
-            hearing aid prescriptions, fittings and adjustments as needed to our
-            patients.
-            <br />
-            <br />
-            We are devoted to improving the quality of life for every person who
-            comes to our clinic. Tapping the diverse technologies of all our
-            partners arround the world, we effectively apply our resources to
-            support hearing care professionals and to provide high-tech
-            solutions that meet the hearing and cosmetic preferences of each
-            patient. Niger Bell takes pride in its global global partners with
-            loyal and satisfied clients across Nigeria.
-            <br />
-            <br />
-            We are large enough to blend the latest technology with
-            sophisticated design and engineering, while offering the highest
-            level of personalized service.
-          </p>
+          <div dangerouslySetInnerHTML={{ __html: aboutdata.content }} />
           <br />
           <h1 className="about-spec-header about-jumbo-header">
             OUR SPECIALIZATION
           </h1>
           <div className="about-specializations">
-              {obj.specializations.map((i, key) => (
-                <div key={key} className="box cardStyleII">
-                  {i}
-                </div>
-              ))}
+            {specializations.map((i, key) => (
+              <div key={key} className="box cardStyleII">
+                {i}
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -63,7 +44,7 @@ export default ({ data }) => {
 
 export const query = graphql`
   {
-    allFile(
+    fetchSpecializations: allFile(
       filter: {
         sourceInstanceName: { eq: "data" }
         name: { eq: "specializations" }
@@ -74,6 +55,23 @@ export const query = graphql`
           childMarkdownRemark {
             frontmatter {
               specializations
+            }
+          }
+        }
+      }
+    }
+    fetchAboutPage: allFile(
+      filter: { sourceInstanceName: { eq: "data" }, name: { eq: "aboutpage" } }
+    ) {
+      edges {
+        node {
+          childMarkdownRemark {
+            frontmatter {
+              image
+              author
+              jobtitle
+              title
+              content
             }
           }
         }

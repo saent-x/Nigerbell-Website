@@ -10,26 +10,36 @@ import { ReduceText } from "../helper"
 import moment from "moment"
 
 export default ({ data }) => {
-  const posts = data.allMarkdownRemark.edges.map(edge => {
+  const posts = data.fetchPosts.edges.map(edge => {
     let obj = { ...edge.node.frontmatter }
     obj.body = edge.node.rawMarkdownBody
     return obj
   })
   const specializations =
-    data.allFile.edges[0].node.childMarkdownRemark.frontmatter.specializations
+    data.fetchSpecializations.edges[0].node.childMarkdownRemark.frontmatter
+      .specializations
+  const homepageData =
+    data.fetchIndex.edges[0].node.childMarkdownRemark.frontmatter
+  const partners =
+    data.fetchPartners.edges[0].node.childMarkdownRemark.frontmatter.partners
+
   const openPost = title => navigate(title)
 
   return (
     <Layout>
       <div>
-        <Headline />
+        <Headline info={homepageData.infotext} />
         <div autoplay>
-          <div className="carousel carousel-slide1">
+          <div
+            className="carousel carousel-slide1"
+            style={{ backgroundImage: `url(${homepageData.homejumbo.image})` }}
+          >
             <div className="slide-info">
-              <h1 className="slide-info-heading">Nigerbell Hearing</h1>
+              <h1 className="slide-info-heading">
+                {homepageData.homejumbo.title}
+              </h1>
               <p className="slide-info-paragraph">
-                Nigerbell is one of Nigeria's most respected Speech and Hearing
-                centers with international partners.
+                {homepageData.homejumbo.content}
               </p>
             </div>
           </div>
@@ -38,32 +48,16 @@ export default ({ data }) => {
           <div className="home-intro" title="Who we are? and What we do?">
             <div className="home-intro-card">
               <div className="home-intro-image-container">
-                <img
-                  className="home-intro-image"
-                  src={require("../assets/imgs/wwr.jpg")}
-                />
-                <p>Dr. Bem Vangerwua</p>
-                <p> C.E.O Nigerbell Group</p>
+                <img className="home-intro-image" src={homepageData.image} />
+                <p>{homepageData.author}</p>
+                <p>{homepageData.jobtitle}</p>
               </div>
               <div className="home-intro-card-content">
                 <h1 className="home-intro-card-content-header">
-                  Who we are? and What we do?
+                  {homepageData.title}
                 </h1>
                 <p className="home-intro-content-text">
-                  We are hearing healthcare experts specializing in the
-                  prevention, identification, assessment, treatment and
-                  rehabilitation of hearing difficulties in both adults and
-                  children.
-                  <br />
-                  <br />
-                  We provide hearing assessments, and hearing aid prescriptions,
-                  fittings and adjustments as needed to our patients. We are
-                  devoted to improving the quality of life for every person who
-                  comes to our clinic. Nigerbell takes pride in its global
-                  global partners with loyal and satisfied clients across
-                  Nigeria. We are large enough to blend the latest technology
-                  with sophisticated design and engineering, while offering the
-                  highest level of personalized service.
+                  {homepageData.content}
                 </p>
               </div>
             </div>
@@ -84,7 +78,11 @@ export default ({ data }) => {
           <h1 className="home-article-header">Articles</h1>
           <div className="home-short-info">
             {posts.map((e, key) => (
-              <div key={key} class="card cardStyle" onClick={() => openPost(e.title)}>
+              <div
+                key={key}
+                class="card cardStyle"
+                onClick={() => openPost(e.title)}
+              >
                 <div class="card-image">
                   <figure class="image is-4by3">
                     <img src={e.thumbnail} alt={e.title} />
@@ -93,34 +91,38 @@ export default ({ data }) => {
                 <div class="card-content">
                   <div class="media">
                     <div class="media-left">
-                      <figure class="image is-48x48">
+                      <figure class="image is-32x32">
                         <img src={e.authorimage} alt={e.author} />
                       </figure>
                     </div>
                     <div class="media-content">
                       <p
-                        class="title is-4"
+                        class="title is-6"
                         style={{ color: "black !important" }}
                       >
                         {e.author}
                       </p>
-                      <p class="subtitle is-6">@{e.author.toLowerCase()}</p>
+                      <p className="subtitle is-6">
+                          {moment(e.date).format("YYYY-MM-DD")}
+                        </p>
                     </div>
                   </div>
 
                   <div class="content">
                     {ReduceText(e.description, 15)}
-                    <a href="#">#css</a> <a href="#">#responsive</a>
-                    <br />
-                    <time datetime="2016-1-1">
-                      {moment(e.date).format("YYYY-MM-DD")}
-                    </time>
+                    {e.tag ? (
+                      <div className="tags">
+                        {e.tag.map((e, key) => (
+                          <span className="tag is-small is-warning">#{e}</span>
+                        ))}
+                      </div>
+                    ) : null}
                   </div>
                 </div>
               </div>
             ))}
           </div>
-          <Partners />
+          <Partners partners={partners}/>
           <MapArea />
         </div>
       </div>
@@ -129,41 +131,81 @@ export default ({ data }) => {
 }
 
 export const query = graphql`
-  {
-    allFile(
-      filter: {
-        sourceInstanceName: { eq: "data" }
-        name: { eq: "specializations" }
-      }
-    ) {
-      edges {
-        node {
-          childMarkdownRemark {
-            frontmatter {
-              specializations
-            }
-          }
-        }
-      }
-    }
-    allMarkdownRemark(
-      filter: { frontmatter: { key: { eq: "blog" } } }
-      limit: 4
-      sort: { fields: frontmatter___date, order: DESC }
-    ) {
-      edges {
-        node {
-          frontmatter {
-            author
-            authorimage
-            date
-            description
-            title
-            thumbnail
-          }
-          rawMarkdownBody
-        }
-      }
-    }
-  }
-`
+         {
+           fetchPartners: allFile(
+             filter: {
+               sourceInstanceName: { eq: "data" }
+               name: { eq: "partners" }
+             }
+           ) {
+             edges {
+               node {
+                 childMarkdownRemark {
+                   frontmatter {
+                     partners
+                   }
+                 }
+               }
+             }
+           }
+           fetchSpecializations: allFile(
+             filter: {
+               sourceInstanceName: { eq: "data" }
+               name: { eq: "specializations" }
+             }
+           ) {
+             edges {
+               node {
+                 childMarkdownRemark {
+                   frontmatter {
+                     specializations
+                   }
+                 }
+               }
+             }
+           }
+           fetchIndex: allFile(
+             filter: {
+               sourceInstanceName: { eq: "data" }
+               name: { eq: "index" }
+             }
+           ) {
+             edges {
+               node {
+                 childMarkdownRemark {
+                   frontmatter {
+                     image
+                     author
+                     content
+                     title
+                     jobtitle
+                     infotext
+                     homejumbo {
+                       image
+                       title
+                       content
+                     }
+                   }
+                 }
+               }
+             }
+           }
+           fetchPosts: allMarkdownRemark(
+             filter: { frontmatter: { key: { eq: "blog" } } }
+           ) {
+             edges {
+               node {
+                 frontmatter {
+                   author
+                   authorimage
+                   date
+                   description
+                   title
+                   thumbnail
+                   tag
+                 }
+               }
+             }
+           }
+         }
+       `

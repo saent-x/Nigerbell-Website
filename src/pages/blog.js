@@ -9,7 +9,6 @@ export default ({ data }) => {
   const openPost = title => navigate(title)
   const posts = data.allMarkdownRemark.edges.map(edge => {
     let obj = { ...edge.node.frontmatter }
-    obj.body = edge.node.rawMarkdownBody
     return obj
   })
 
@@ -35,13 +34,12 @@ export default ({ data }) => {
               <div class="card-content">
                 <div class="media">
                   <div class="media-left">
-                    <figure class="image is-48x48">
+                    <figure class="image is-32x32">
                       <img src={e.authorimage} alt={e.title} />
                     </figure>
                   </div>
                   <div class="media-content">
-                    <p class="title is-4">{e.author}</p>
-                    <p class="subtitle is-6">{e.author}</p>
+                    <p class="title is-5">{e.author}</p>
                   </div>
                 </div>
                 <div class="content">
@@ -91,7 +89,6 @@ export const query = graphql`
             thumbnail
             tag
           }
-          rawMarkdownBody
         }
       }
     }
