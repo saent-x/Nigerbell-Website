@@ -1,6 +1,7 @@
 ---
 image: /img/tem5.jpg
 author: Dr. Barnabas Vangerwua
+authorimage: /img/logo.png
 jobtitle: CEO Nigerbell Group
 title: ABOUT US
 content: >-
