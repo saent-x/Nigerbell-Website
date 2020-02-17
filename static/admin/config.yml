@@ -17,8 +17,15 @@ collections:
     fields: # The fields for each document, usually in front matter
       - { label: "Key", name: "key", widget: "hidden", default: "blog" }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "AuthorImage", name: "authorimage", widget: "image" }
+      - { label: "Author Image", name: "authorimage", widget: "image" }
       - { label: "Author", name: "author", widget: "string" }
+      - { label: "Job Title", name: "jobtitle", widget: "string" }
+      - {
+          label: "Tag",
+          name: "tag",
+          widget: "list",
+          field: { label: "Name", name: "name", widget: "string" },
+        }
       - { label: "Description", name: "description", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Featured Image", name: "thumbnail", widget: "image" }
@@ -34,6 +41,12 @@ collections:
     fields:
       - { label: "Key", name: "key", widget: "hidden", default: "products" }
       - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Tag",
+          name: "tag",
+          widget: "list",
+          field: { label: "Name", name: "name", widget: "string" },
+        }
       - { label: "Content", name: "content", widget: "string" }
       - { label: "Image", name: "image", widget: "image" }
 
@@ -49,9 +62,11 @@ collections:
           - { label: "Image", name: "image", widget: "image" }
           - { label: "Author", name: "author", widget: "string" }
           - { label: "Title", name: "title", widget: "string" }
+          - { label: "Job Title", name: "jobtitle", widget: "string" }
           - { label: "Content", name: "content", widget: "string" }
+          - { label: "Info Text", name: "infotext", widget: "string" }
           - {
-              label: "HomeJumbo",
+              label: "Home Jumbotron",
               name: "homejumbo",
               widget: "object",
               fields:
@@ -83,8 +98,9 @@ collections:
         fields:
           - { label: "Image", name: "image", widget: "image" }
           - { label: "Author", name: "author", widget: "string" }
+          - { label: "Job Title", name: "jobtitle", widget: "string" }
           - { label: "Title", name: "title", widget: "string" }
-          - { label: "Content", name: "content", widget: "string" }
+          - { label: "Content", name: "content", widget: "markdown" }
 
       - file: "src/data/partners.md"
         label: "Partners"
@@ -92,13 +108,9 @@ collections:
         editor:
           preview: false
         fields:
-          - { label: "Image", name: "image", widget: "image" }
-          - { label: "Title", name: "title", widget: "string" }
-
-      - file: "src/data/info.md"
-        label: "Info"
-        name: "info"
-        editor:
-          preview: false
-        fields:
-          - { label: "InfoText", name: "infotext", widget: "string" }
+          - {
+              label: "Partners",
+              name: "partners",
+              widget: "list",
+              field: { label: "Image", name: "image", widget: "image" },
+            }
