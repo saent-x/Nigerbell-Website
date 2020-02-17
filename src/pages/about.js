@@ -45,25 +45,15 @@ export default ({ data }) => {
             level of personalized service.
           </p>
           <br />
-          <h1
-            style={{
-              fontSize: "35px",
-              color: "#903",
-              backgroundColor: "gray",
-            }}
-            className="about-jumbo-header"
-          >
+          <h1 className="about-spec-header about-jumbo-header">
             OUR SPECIALIZATION
           </h1>
           <div className="about-specializations">
-            <ul className="about-spec-list">
               {obj.specializations.map((i, key) => (
-                  <li key={key} className="about-spec-list-item">
-                      {i}
-                </li>
+                <div key={key} className="box cardStyleII">
+                  {i}
+                </div>
               ))}
-            </ul>
-            
           </div>
         </div>
       </div>

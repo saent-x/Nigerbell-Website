@@ -1,15 +1,24 @@
 import React from "react"
-import { Carousel, Card } from "antd"
 import "../styles/home.css"
 import Partners from "../components/partners"
 import MapArea from "../components/maparea"
 import Headline from "../components/headline"
 import Layout from "../components/layout"
-import { graphql } from "gatsby"
-
-const { Meta } = Card
+import { graphql, navigate } from "gatsby"
+import "../styles/global.scss"
+import { ReduceText } from "../helper"
+import moment from "moment"
 
 export default ({ data }) => {
+  const posts = data.allMarkdownRemark.edges.map(edge => {
+    let obj = { ...edge.node.frontmatter }
+    obj.body = edge.node.rawMarkdownBody
+    return obj
+  })
+  const specializations =
+    data.allFile.edges[0].node.childMarkdownRemark.frontmatter.specializations
+  const openPost = title => navigate(title)
+
   return (
     <Layout>
       <div>
@@ -61,153 +70,59 @@ export default ({ data }) => {
           </div>
           <h1 className="home-specializations-header">Our Specializations</h1>
 
-          <div className="home-specializations" title="Our Specializations">
+          <div className="home-specializations">
             <div className="home-specializations-list">
-              <Card hoverable className="cardStyleII">
-                <Meta
-                  className="home-specializations-list-item"
-                  description="Tinnitus Counselling & Management"
-                />
-              </Card>
-              <Card hoverable className="cardStyleII">
-                <Meta
-                  className="home-specializations-list-item"
-                  description="Audiometric Calibration"
-                />
-              </Card>
-              <Card hoverable className="cardStyleII">
-                <Meta
-                  className="home-specializations-list-item"
-                  description="Hearing Solution Providers"
-                />
-              </Card>
-              <Card hoverable className="cardStyleII">
-                <Meta
-                  className="home-specializations-list-item"
-                  description="Ear Moulds"
-                />
-              </Card>
-              <Card hoverable className="cardStyleII">
-                <Meta
-                  className="home-specializations-list-item"
-                  description="Audiological Equipment Sales"
-                />
-              </Card>
-              <Card hoverable className="cardStyleII">
-                <Meta
-                  className="home-specializations-list-item"
-                  description="Speech Therapy Services"
-                />
-              </Card>
-              <Card hoverable className="cardStyleII">
-                <Meta
-                  className="home-specializations-list-item"
-                  description="Ear Care & Hearing Health Care"
-                />
-              </Card>
-              <Card hoverable className="cardStyleII">
-                <Meta
-                  className="home-specializations-list-item"
-                  description="Audiological Services"
-                />
-              </Card>
-              <Card hoverable className="cardStyleII">
-                <Meta
-                  className="home-specializations-list-item"
-                  description="Hearing Aids Styles"
-                />
-              </Card>
-              <Card hoverable className="cardStyleII">
-                <Meta
-                  className="home-specializations-list-item"
-                  description="Hearing Aid Equipment Sales"
-                />
-              </Card>
-              <Card hoverable className="cardStyleII">
-                <Meta
-                  className="home-specializations-list-item"
-                  description="Hearing Aid Repairs and Services"
-                />
-              </Card>
-              <Card hoverable className="cardStyleII">
-                <Meta
-                  className="home-specializations-list-item"
-                  description="Hearing Aid Accessories Sales"
-                />
-              </Card>
-              <Card hoverable className="cardStyleII">
-                <Meta
-                  className="home-specializations-list-item"
-                  description="Hearing Aids Consumable Sales"
-                />
-              </Card>
-              <Card hoverable className="cardStyleII">
-                <Meta
-                  className="home-specializations-list-item"
-                  description="Ear Conservation Project"
-                />
-              </Card>
+              {specializations.map((specialty, key) => (
+                <div key={key} className="box cardStyleII">
+                  {specialty}
+                </div>
+              ))}
             </div>
           </div>
         </div>
         <div className="home-articles">
           <h1 className="home-article-header">Articles</h1>
           <div className="home-short-info">
-            <Card
-              hoverable
-              className="cardStyle"
-              cover={
-                <img
-                  alt="example"
-                  height="200"
-                  src={require("../assets/imgs/tem1.jpg")}
-                />
-              }
-            >
-              <Meta
-                className="home-article-content"
-                title="Cochlear Implants"
-                description="Cochlear implants are designed for people with severe-to-profound sensorineural hearing loss. With this type of hearing loss, the hair cells in the inner ear are damaged, and can’t detect sounds properly. A cochlear implant bypasses these damaged hair cells and sends electric signals to the brain, where they are interpreted as sound."
-              />
-            </Card>
-            <Card
-              hoverable
-              className="cardStyle"
-              cover={
-                <img
-                  alt="example"
-                  height="200"
-                  src={require("../assets/imgs/tem2.jpg")}
-                />
-              }
-            >
-              <Meta
-                className="home-article-content"
-                title="Products"
-                description="WIDEX DREAM allows more sound in than any other hearing aid so you can hear more details of the world around you – and in a way that’s as true-to-life as technology allows. Even in noisy environments such as parties, sport events or at the cinema."
-              />
-            </Card>
-            <Card
-              hoverable
-              className="cardStyle"
-              cover={
-                <img
-                  alt="example"
-                  height="200"
-                  src={require("../assets/imgs/tem3.jpg")}
-                />
-              }
-            >
-              <Meta
-                className="home-article-content"
-                title="Consulting"
-                description="Probably the best way to start with us is to book an appointment to see one of our audiologists. You will be asked for details about the hearing problems you have including any relevant information about your health history in general."
-              />
-            </Card>
+            {posts.map((e, key) => (
+              <div key={key} class="card cardStyle" onClick={() => openPost(e.title)}>
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img src={e.thumbnail} alt={e.title} />
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-left">
+                      <figure class="image is-48x48">
+                        <img src={e.authorimage} alt={e.author} />
+                      </figure>
+                    </div>
+                    <div class="media-content">
+                      <p
+                        class="title is-4"
+                        style={{ color: "black !important" }}
+                      >
+                        {e.author}
+                      </p>
+                      <p class="subtitle is-6">@{e.author.toLowerCase()}</p>
+                    </div>
+                  </div>
+
+                  <div class="content">
+                    {ReduceText(e.description, 15)}
+                    <a href="#">#css</a> <a href="#">#responsive</a>
+                    <br />
+                    <time datetime="2016-1-1">
+                      {moment(e.date).format("YYYY-MM-DD")}
+                    </time>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
+          <Partners />
+          <MapArea />
         </div>
-        <Partners />
-        <MapArea />
       </div>
     </Layout>
   )
@@ -228,6 +143,25 @@ export const query = graphql`
               specializations
             }
           }
+        }
+      }
+    }
+    allMarkdownRemark(
+      filter: { frontmatter: { key: { eq: "blog" } } }
+      limit: 4
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            author
+            authorimage
+            date
+            description
+            title
+            thumbnail
+          }
+          rawMarkdownBody
         }
       }
     }

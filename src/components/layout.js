@@ -9,11 +9,11 @@ const { Header, Content, Footer } = Layout
 export default ({ children }) => {
   return (
     <Layout className="App">
-      <Header className="nav-header">
+      <header>
         <NavBar />
-      </Header>
+      </header>
       <Content>
-        <div style={{ height: "100%", marginTop: "45px" }}>{children}</div>
+        <div style={{ height: "100%", marginTop: "52px" }}>{children}</div>
       </Content>
 
       <Footer style={{ backgroundColor: "black" }}>

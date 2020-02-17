@@ -1,13 +1,18 @@
 import React from "react"
 import Layout from "../components/layout"
 import "../styles/bloghome.css"
-import { Card, Avatar, Pagination } from "antd"
-import { graphql } from "gatsby"
+import { Pagination } from "antd"
+import { graphql, navigate } from "gatsby"
+import "../styles/global.scss"
 
 export default ({ data }) => {
-  const openPost = () => this.props.history.push("/post/1234")
-  //const posts = data.allMarkdownRemark.edges.map(edge => edge.node.frontmatter)
-  const posts = [];
+  const openPost = title => navigate(title)
+  const posts = data.allMarkdownRemark.edges.map(edge => {
+    let obj = { ...edge.node.frontmatter }
+    obj.body = edge.node.rawMarkdownBody
+    return obj
+  })
+
   return (
     <Layout>
       <div className="blog-container">
@@ -17,21 +22,42 @@ export default ({ data }) => {
         </div>
         <div className="blog-posts">
           {posts.map((e, key) => (
-            <Card
-              hoverable
-              className="blog-card"
+            <div
               key={key}
-              cover={<img alt="post depiction" src={e.imageUrl} />}
-              onClick={() => openPost()}
+              class="card blog-card"
+              onClick={() => openPost(e.title)}
             >
-              <Card.Meta
-                avatar={
-                  <Avatar src={e.author} />
-                }
-                title={e.title}
-                // description={e.description}
-              />
-            </Card>
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  <img src={e.thumbnail} alt={e.title} />
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-left">
+                    <figure class="image is-48x48">
+                      <img src={e.authorimage} alt={e.title} />
+                    </figure>
+                  </div>
+                  <div class="media-content">
+                    <p class="title is-4">{e.author}</p>
+                    <p class="subtitle is-6">{e.author}</p>
+                  </div>
+                </div>
+                <div class="content">
+                  {e.description}
+
+                  {e.tag ? (
+                    <div className="tags">
+                      {e.tag.map((e, key) => (
+                        <span className="tag is-small is-warning">#{e}</span>
+                      ))}
+                    </div>
+                  ) : null}
+                  <br />
+                </div>
+              </div>
+            </div>
           ))}
         </div>
         <br />
@@ -51,20 +77,23 @@ export default ({ data }) => {
   )
 }
 
-// export const query = graphql`
-//   {
-//     allMarkdownRemark(filter: { frontmatter: { key: { eq: "blog" } } }) {
-//       edges {
-//         node {
-//           frontmatter {
-//             title
-//             date
-//             thumbnail
-//             body
-//             author
-//           }
-//         }
-//       }
-//     }
-//   }
-// `
+export const query = graphql`
+  {
+    allMarkdownRemark(filter: { frontmatter: { key: { eq: "blog" } } }) {
+      edges {
+        node {
+          frontmatter {
+            author
+            authorimage
+            date
+            description
+            title
+            thumbnail
+            tag
+          }
+          rawMarkdownBody
+        }
+      }
+    }
+  }
+`

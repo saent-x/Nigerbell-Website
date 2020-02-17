@@ -1,38 +1,50 @@
 import React from "react"
 import Moment from "moment"
 import "../styles/footer.css"
-import { Icon } from "antd"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export default () => {
   return (
     <div className="footer-container">
       <div className="footer-social-container">
-        <div className="footer-social">
-          <Icon
-            style={{ color: "white" }}
-            className="social-icon"
-            type="facebook"
+        <div
+          title="facebook"
+          className="footer-social"
+          style={{ backgroundColor: "#3b5999" }}
+        >
+          <FontAwesomeIcon
+            style={{ color: "white", fontSize: "20px" }}
+            icon={["fab", "facebook-f"]}
           />
         </div>
-        <div className="footer-social">
-          <Icon
-            style={{ color: "white" }}
-            className="social-icon"
-            type="twitter"
+        <div
+          title="twitter"
+          className="footer-social"
+          style={{ backgroundColor: "#0084ff" }}
+        >
+          <FontAwesomeIcon
+            style={{ color: "white", fontSize: "20px" }}
+            icon={["fab", "twitter"]}
           />
         </div>
-        <div className="footer-social">
-          <Icon
-            style={{ color: "white" }}
-            className="social-icon"
-            type="linkedin"
+        <div
+          title="linkedin"
+          className="footer-social"
+          style={{ backgroundColor: "#0077B5" }}
+        >
+          <FontAwesomeIcon
+            style={{ color: "white", fontSize: "20px" }}
+            icon={["fab", "linkedin-in"]}
           />
         </div>
-        <div className="footer-social">
-          <Icon
-            style={{ color: "white" }}
-            className="social-icon"
-            type="instagram"
+        <div
+          title="instagram"
+          className="footer-social"
+          style={{ backgroundColor: "#e4405f" }}
+        >
+          <FontAwesomeIcon
+            style={{ color: "white", fontSize: "22px" }}
+            icon={["fab", "instagram"]}
           />
         </div>
       </div>

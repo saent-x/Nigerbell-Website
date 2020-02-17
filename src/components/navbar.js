@@ -1,78 +1,79 @@
-import React from "react";
-import "../styles/navbar.css";
-import { Menu, Input, Icon } from "antd";
-import { Link } from "gatsby";
-
-const { Search } = Input;
-const { SubMenu } = Menu;
-
+import React from "react"
+import { Link } from "gatsby"
+import "../styles/global.scss"
 
 export default () => {
   return (
     <React.Fragment>
-      <div className="nav-logo">
-        <img
-          alt="logo"
-          width="30"
-          height="30"
-          src={require("../assets/icons/logo.png")}
-        />
-        <h4 className="nav-brand">Nigerbell Hearing</h4>
-      </div>
-
-      <Menu
-        className="collapse-nav"
-        overflowedIndicator={<Icon type="menu" />}
-        theme="dark"
-        mode="horizontal"
-        defaultSelectedKeys={["1"]}
-        style={{ lineHeight: "45px", backgroundColor: "black" }}
+      <nav
+        className="navbar is-fixed-top is-black"
+        role="navigation"
+        aria-label="main navigation"
       >
-        <Menu.Item
-          disabled={true}
-          key="0"
-          onClick={() => console.log("probably worked!")}
-        >
-          <Search
-            className="search-collapse-nav"
-            placeholder="search"
-            onSearch={value => console.log(value)}
-            style={{ width: 200 }}
-          />
-        </Menu.Item>
-        <Menu.Item className="nav-highlight" key="1">
-          <Link className="selected-link" to="/">
-            Home
-          </Link>
-        </Menu.Item>
+        <div className="navbar-brand">
+          <a className="navbar-item" href="https://nigerbellltd.netlify.com">
+            <img
+              src={require("../assets/icons/logo.png")}
+              width="30"
+              height="40"
+            />
+            <p style={{ marginLeft: "10px" }}>Nigerbell Hearing</p>
+          </a>
 
-        <Menu.Item key="2">
-          <Link className="selected-link" to="/products">
-            Products
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="3">
-          <Link className="selected-link" to="/blog">
-            Blog
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="8">
-          <Link className="selected-link" to="/about">
-            About
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="9">
-          <Link className="selected-link" to="/contact">
-            Contact
-          </Link>
-        </Menu.Item>
-      </Menu>
-      <Search
-        className="hide-search-nav"
-        placeholder="search"
-        onSearch={value => console.log(value)}
-        style={{ width: 200 }}
-      />
+          <a
+            role="button"
+            className="navbar-burger burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarBasic"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div id="navbarBasic" className="navbar-menu">
+          <div className="navbar-start">
+            <Link
+              className="navbar-item"
+              to="/"
+              activeStyle={{ color: "gray" }}
+            >
+              Home
+            </Link>
+
+            <Link
+              className="navbar-item"
+              to="/products"
+              activeStyle={{ color: "gray" }}
+            >
+              Products
+            </Link>
+            <Link
+              className="navbar-item"
+              to="/blog"
+              activeStyle={{ color: "gray" }}
+            >
+              Blog
+            </Link>
+            <Link
+              className="navbar-item"
+              to="/about"
+              activeStyle={{ color: "gray" }}
+            >
+              About
+            </Link>
+            <Link
+              className="navbar-item"
+              to="/contact"
+              activeStyle={{ color: "gray" }}
+            >
+              Contact
+            </Link>
+          </div>
+        </div>
+      </nav>
     </React.Fragment>
   )
 }
