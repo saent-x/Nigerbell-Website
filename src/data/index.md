@@ -2,6 +2,7 @@
 image: /img/wwr.jpg
 author: Dr. Bem Vangerwua
 title: Who we are? and What we do?
+jobtitle: CEO Nigerbell Group
 content: >-
   We are hearing healthcare experts specializing in the prevention,
   identification, assessment, treatment and rehabilitation of hearing
