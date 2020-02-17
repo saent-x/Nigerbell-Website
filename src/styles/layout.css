@@ -1,12 +1,13 @@
 .nav-header {
   width: 100%;
-  display: flex;
+  margin: 0px;
+  /* display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: black !important; 
-  height: 45px !important; 
-  padding-left: 10px !important;
-  position: fixed;
-  z-index: 1;
+  background-color: black !important;  */
+  /* height: 45px !important;  */
+  /* padding-left: 10px !important; */
+  /* position: fixed; */
+  /* z-index: 1; */
 }

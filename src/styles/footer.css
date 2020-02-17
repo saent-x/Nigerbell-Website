@@ -1,41 +1,40 @@
-.footer-container{
-    height: 200px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: black;
+.footer-container {
+  height: 200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
 }
 
-.footer-social-container{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+.footer-social-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
-.footer-social{
-    height: 40px;
-    width: 40px;
-    background-color: black;
-    color: black;
-    margin: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: 0.2px solid white;
-    cursor: pointer;
-    transition: 0.2s;
+.footer-social {
+  height: 40px;
+  width: 40px;
+  color: black;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s;
+  border-radius: 4px;
 }
 
-.footer-social:hover{
-    transform: scale(1.08);
-    border: 0;
+.footer-social:hover {
+  transform: scale(1.08);
+  border: 0;
 }
 
-.social-icon{
-    font-size: 30px;
-    color: white;
+.social-icon {
+  font-size: 30px;
+  color: white;
 }

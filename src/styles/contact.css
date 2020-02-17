@@ -3,9 +3,6 @@
   flex-direction: row;
   background-color: white;
   height: 100vh;
-  /* background-image: url(../assets/imgs/tem4.jpg);
-  background-repeat: no-repeat;
-  background-size: 100% 100%; */
 }
 
 .contact-input {
@@ -18,9 +15,13 @@
   background-color: gray;
   height: 100%;
   padding: 20px;
-    background-image: url(../assets/imgs/tem4.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: rgb(131, 58, 180);
+  background: linear-gradient(
+    90deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 79, 1) 50%,
+    rgba(252, 176, 69, 1) 100%
+  );
 }
 
 .contact-btn {
@@ -31,12 +32,6 @@
   color: white !important;
 }
 
-.contact-header {
-  color: black;
-  font-family: "Open Sans", sans-serif;
-  font-size: 40px;
-  font-weight: 700;
-}
 
 .tick {
   display: inline;
@@ -44,19 +39,12 @@
 }
 
 .contact-textbox {
-  background-color: white;
-  border: 3px solid lightgrey;
-  font-family: "Open Sans", sans-serif;
-  font-size: 15px;
-  padding: 10px;
-  outline: none;
   width: 70%;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
 .contact-textbox::placeholder {
-  color: lightgrey;
   opacity: 1;
 }
 
@@ -92,10 +80,10 @@
   .contact-header {
     font-size: 26px;
   }
-  .contact-textbox{
-      width: 100%;
+  .contact-textbox {
+    width: 100%;
   }
-  .contact-btn{
-      width: 100% !important;
+  .contact-btn {
+    width: 100% !important;
   }
 }

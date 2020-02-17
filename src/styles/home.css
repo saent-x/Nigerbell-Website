@@ -179,6 +179,7 @@
   width: 300px;
   height: 470px;
   margin: 10px !important;
+  cursor: pointer;
 }
 
 .cardStyleII {

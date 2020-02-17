@@ -1,4 +1,4 @@
-.ant-menu.ant-menu-dark .ant-menu-item-selected,
+/* .ant-menu.ant-menu-dark .ant-menu-item-selected,
 .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
   background-color: #f0f2f5 !important;
   color: black !important;
@@ -48,9 +48,6 @@
   width: 50%;
 }
 
-.selected-link:focus {
-  color: black !important;
-}
 
 @media only screen and (max-width: 768px) {
   .collapse-nav {
@@ -64,4 +61,4 @@
     display: inline !important;
   }
 
-}
+} */
