@@ -5,7 +5,10 @@ authorimage: /img/logo.png
 jobtitle: CEO Nigerbell Group
 title: ABOUT US
 content: >-
-  We are hearing healthcare experts specializing in the prevention,
+  # **A BRIEF INTRODUCTION**
+
+
+  **We** are hearing healthcare experts specializing in the prevention,
   identification, assessment, treatment and rehabilitation of hearing
   difficulties in both adults and children. We provide hearing assessments, and
   hearing aid prescriptions, fittings and adjustments as needed to our
