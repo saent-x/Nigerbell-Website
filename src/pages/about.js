@@ -13,10 +13,20 @@ export default ({ data }) => {
   return (
     <Layout>
       <div className="about-container">
-        <div className="about-jumbo">
+        <div
+          className="about-jumbo"
+          style={{
+            backgroundImage: `linear-gradient(
+      to bottom,
+      rgba(245, 246, 252, 0.52),
+      rgba(0, 0, 0, 0.73)
+    ),
+    url(${aboutdata.image})`,
+          }}
+        >
           <h1 className="about-jumbo-header">ABOUT US</h1>
           <div className="about-jumbo-profile">
-            <img className="about-profile-img" src={aboutdata.image} />
+            <img className="about-profile-img" src={aboutdata.authorimage} />
             <div className="about-profile-name">
               <p className="about-company-name">{aboutdata.author}</p>
               <p className="about-company-rep">{aboutdata.jobtitle}</p>
@@ -24,7 +34,7 @@ export default ({ data }) => {
           </div>
         </div>
         <div className="about-content">
-          <div dangerouslySetInnerHTML={{ __html: aboutdata.content }} />
+          <p className="about-content-text">{aboutdata.content}</p>
           <br />
           <h1 className="about-spec-header about-jumbo-header">
             OUR SPECIALIZATION
@@ -69,10 +79,12 @@ export const query = graphql`
             frontmatter {
               image
               author
+              authorimage
               jobtitle
               title
               content
             }
+            html
           }
         }
       }
