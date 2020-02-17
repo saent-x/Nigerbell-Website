@@ -3,6 +3,9 @@ key: blog
 title: gfygiuioip0pijhkugjftdheyuri7t8oyip9uo
 authorimage: /img/logo.png
 author: Dr Van JJJJ
+tag:
+  - Hearing Aids Equipment
+  - Hearing aid Repairs
 description: ';.lkoijhugyftdrbgfdgfhyguhiojpokpojihugyftdrrgftgyhxfcgvhbjnlkm;l,'';.''/ ,.mmnb'
 date: 2020-02-13T01:53:50.918Z
 thumbnail: /img/tem1.jpg

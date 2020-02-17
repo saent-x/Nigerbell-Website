@@ -3,10 +3,14 @@ key: blog
 title: gfygiuioip0pijhkugjftdheyuri7t8oyip9uo
 authorimage: /img/logo.png
 author: Dr Van JJJJ
-description: ';.lkoijhugyftdrbgfdgfhyguhiojpokpojihugyftdrrgftgyhxfcgvhbjnlkm;l,'';.''/ ,.mmnb'
+tag:
+  - Hearing Aids Equipment
+  - Hearing aid Repairs
+description: ";.lkoijhugyftdrbgfdgfhyguhiojpokpojihugyftdrrgftgyhxfcgvhbjnlkm;l,';.'/ ,.mmnb"
 date: 2020-02-13T01:51:00.352Z
 thumbnail: /img/tem1.jpg
 ---
+
 # **HELLO PEOPLE**
 
 We are hearing healthcare experts specializing in the prevention, identification, assessment, treatment and rehabilitation of hearing difficulties in both adults and children. We provide hearing assessments, and hearing aid prescriptions, fittings and adjustments as needed to our patients.\
