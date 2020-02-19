@@ -1,8 +1,9 @@
 ---
 key: blog
-title: A Simple Blog Post
+title: 'A Simple Blog Post [2]'
 authorimage: /img/logo.png
 author: Dr Barnabas Vangerwua
+jobtitle: CEO Nigerbell Group
 tag:
   - Hearing
   - Speech
