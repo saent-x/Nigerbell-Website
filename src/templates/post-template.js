@@ -1,12 +1,14 @@
 import React from "react"
 import Layout from "../components/layout"
 import "../styles/blogpost.css"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import moment from "moment"
 
-export default ({ data }) => {
+export default ({ data, pageContext }) => {
   const post = data.markdownRemark.frontmatter
   const body = data.markdownRemark.html
+
+  const { next, previous } = pageContext
 
   return (
     <Layout>
@@ -45,10 +47,27 @@ export default ({ data }) => {
           {post.tag ? (
             <div className="tags">
               {post.tag.map((e, key) => (
-                <span key={key} className="tag is-medium is-warning">#{e}</span>
+                <span key={key} className="tag is-medium is-warning">
+                  #{e}
+                </span>
               ))}
             </div>
           ) : null}
+
+          <div className="post-pagination">
+            <nav
+              class="pagination is-centered"
+              role="navigation"
+              aria-label="pagination"
+            >
+              <a class="pagination-previous" disabled={!previous}>
+                <Link to={previous}>Previous</Link>
+              </a>
+              <a class="pagination-next" disabled={!next}>
+                <Link to={next}>Next page</Link>
+              </a>
+            </nav>
+          </div>
         </div>
       </div>
     </Layout>
@@ -56,8 +75,8 @@ export default ({ data }) => {
 }
 
 export const query = graphql`
-  query($title: String!) {
-    markdownRemark(frontmatter: { title: { eq: $title } }) {
+  query BlogPostBySlug($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title
         author

@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import Layout from "../components/layout"
 import "../styles/products.css"
-import { Card, Pagination, Modal, Statistic } from "antd"
+import { Pagination, Modal, Statistic } from "antd"
 import { graphql } from "gatsby"
 import "../styles/global.scss"
 import { ReduceText } from "../helper"
@@ -29,32 +29,38 @@ export default ({ data }) => {
         <h3 className="subtitle">Explore the products in our inventory</h3>
         <div className="searchbar-container">
           <input
-            class="input is-rounded searchbar"
+            className="input is-rounded searchbar"
             type="text"
             placeholder="product name, category"
           ></input>
         </div>
         <div className="products">
           {products.map((e, key) => (
-            <div key={key} class="card product-card"  onClick={() => openModal(e)}>
-              <div class="card-image">
-                <figure class="image is-4by3">
+            <div
+              key={key}
+              className="card product-card"
+              onClick={() => openModal(e)}
+            >
+              <div className="card-image">
+                <figure className="image is-4by3">
                   <img src={e.image} alt={e.title} />
                 </figure>
               </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-content">
-                    <p class="title is-5">{e.title}</p>
+              <div className="card-content">
+                <div className="media">
+                  <div className="media-content">
+                    <p className="title is-5">{e.title}</p>
                   </div>
                 </div>
-                <div class="content">
+                <div className="content">
                   {e.content}
 
                   {e.tag ? (
                     <div className="tags">
                       {e.tag.map((e, key) => (
-                        <span className="tag is-small is-warning">#{e}</span>
+                        <span key={key} className="tag is-small is-warning">
+                          #{e}
+                        </span>
                       ))}
                     </div>
                   ) : null}
@@ -125,8 +131,13 @@ export default ({ data }) => {
 }
 
 export const query = graphql`
-  {
-    allMarkdownRemark(filter: { frontmatter: { key: { eq: "products" } } }) {
+  query productsData($skip: Int!, $limit: Int!) {
+    allMarkdownRemark(
+      filter: { frontmatter: { key: { eq: "products" } } }
+      limit: $limit
+      skip: $skip
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
       edges {
         node {
           frontmatter {
