@@ -27,7 +27,7 @@ export default ({ data }) => {
             <img className="blogpost-profile-img" src={post.authorimage} />
             <div className="blogpost-profile-name">
               <p className="blogpost-company-name">{post.author}</p>
-              {/* <p className="blogpost-company-rep">{post.position}</p> */}
+              <p className="blogpost-company-rep">{post.jobtitle}</p>
               <p className="blogpost-company-timestamp">
                 {moment(post.date).format("MMMM Do YYYY, h:mm a")}
               </p>
@@ -45,7 +45,7 @@ export default ({ data }) => {
           {post.tag ? (
             <div className="tags">
               {post.tag.map((e, key) => (
-                <span className="tag is-medium is-warning">#{e}</span>
+                <span key={key} className="tag is-medium is-warning">#{e}</span>
               ))}
             </div>
           ) : null}
@@ -65,6 +65,7 @@ export const query = graphql`
         thumbnail
         date
         tag
+        jobtitle
       }
       html
     }
