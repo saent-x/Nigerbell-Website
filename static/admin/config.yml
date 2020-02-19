@@ -115,3 +115,15 @@ collections:
               widget: "list",
               field: { label: "Image", name: "image", widget: "image" },
             }
+      - file: "src/data/tags.md"
+        label: "Tags"
+        name: "tags"
+        editor:
+          preview: false
+        fields:
+          - {
+              label: "Tags",
+              name: "tags",
+              widget: "list",
+              field: { label: "Tag", name: "tag", widget: "string" },
+            }
