@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  
   background-repeat: no-repeat;
   background-size: 100% 100%;
   padding: 20px;
@@ -78,9 +77,9 @@
 }
 
 .about-content-text {
-  width: 70%;
+  width: 80%;
   font-family: "Open Sans", sans-serif;
-  font-size: 20px;
+  font-size: 19px;
   text-align: justify;
   text-justify: distribute-all-lines;
   color: black;

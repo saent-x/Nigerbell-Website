@@ -9,6 +9,7 @@ export default ({ data }) => {
       .specializations
   const aboutdata =
     data.fetchAboutPage.edges[0].node.childMarkdownRemark.frontmatter
+  const body = data.fetchAboutPage.edges[0].node.childMarkdownRemark.html
 
   return (
     <Layout>
@@ -34,7 +35,13 @@ export default ({ data }) => {
           </div>
         </div>
         <div className="about-content">
-          {/* <p className="about-content-text">{aboutdata.content}</p> */}
+          <h1 className="about-spec-header about-jumbo-header">
+            INTRODUCTION
+          </h1>
+          <div
+            className="about-content-text"
+            dangerouslySetInnerHTML={{ __html: body }}
+          />
           <br />
           <h1 className="about-spec-header about-jumbo-header">
             OUR SPECIALIZATION
