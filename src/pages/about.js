@@ -34,7 +34,7 @@ export default ({ data }) => {
           </div>
         </div>
         <div className="about-content">
-          <p className="about-content-text">{aboutdata.content}</p>
+          {/* <p className="about-content-text">{aboutdata.content}</p> */}
           <br />
           <h1 className="about-spec-header about-jumbo-header">
             OUR SPECIALIZATION
@@ -82,7 +82,6 @@ export const query = graphql`
               authorimage
               jobtitle
               title
-              content
             }
             html
           }
