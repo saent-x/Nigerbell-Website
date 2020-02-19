@@ -19,9 +19,8 @@ infotext: >-
   employee.
 homejumbo:
   image: /img/slide.jpg
-  title: Nigerbell Hearing
+  title: Nigerbell Hearing & Speech Center
   content: >-
     Nigerbell is one of Nigeria's most respected Speech and Hearing centers with
     international partners.
 ---
-

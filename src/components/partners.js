@@ -7,7 +7,7 @@ export default ({partners}) => {
       <h1 className="partners-header">Partners</h1>
       <div className="partners-logos">
         {partners.map((e, key) => (
-          <img key={key} style={{ margin: "10px" }} width="150" src={e} />
+          <img className="partners-img" key={key} style={{ margin: "10px" }} width="150" src={e} />
         ))}
       </div>
     </div>

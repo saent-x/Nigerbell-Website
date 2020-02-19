@@ -23,6 +23,14 @@
   justify-content: center;
   width: 70%;
 }
+.partners-img{
+  transition: 0.2s;
+  cursor: pointer;
+}
+.partners-img:hover {
+  transform: scale(1.08);
+  border: 0;
+}
 
 @media only screen and (max-width: 768px) {
   .partners-logos {

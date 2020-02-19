@@ -3,8 +3,6 @@
   min-height: 200px;
   display: flex !important;
   flex-direction: row;
-  align-items: flex-end;
-  justify-content: flex-end;
 }
 
 .carousel-slide1 {
@@ -18,6 +16,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  background-color: white;
 }
 
 .home-headline-title {
@@ -47,22 +46,53 @@
   padding-right: 5px;
   width: 100%;
   font-size: 12px;
-  color: blue;
+  color: black;
 }
 
 .slide-info-paragraph,
 .slide-info-heading {
   color: white !important;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Merriweather", serif;
 }
 
 .slide-info-heading {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Merriweather", serif;
   font-size: 30px;
 }
 
+.jumbo-heading {
+  font-size: 55px;
+  font-weight: bold;
+  color: whitesmoke;
+  margin-left: 30px;
+  width: 60%;
+}
+
+.jumbo-subtitle {
+  font-size: 15px;
+  color: #a5a5a5;
+  margin-left: 30px;
+  margin-top: 15px !important;
+  width: 60%;
+}
+
+.jumbo-overlay {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(245, 246, 252, 0.1),
+    rgba(0, 0, 0, 1)
+  );
+}
+
 .slide-info-paragraph {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Merriweather", serif;
   font-size: 16px;
   max-height: 200px !important;
 }
@@ -73,9 +103,8 @@
   align-content: center;
   justify-content: center;
   width: 35%;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 5px;
-  opacity: 0.6;
   margin: 10px;
 }
 
@@ -102,8 +131,6 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  /* max-height: 500px !important; */
-  /* margin-top: 20px !important; */
   width: 100%;
   overflow: auto;
   margin-bottom: 20px;
@@ -122,6 +149,7 @@
 .home-intro-image {
   height: 150px;
   width: 250px;
+  margin-bottom: 10px;
 }
 .home-intro-card-content {
   width: 60%;
@@ -130,21 +158,21 @@
 
 .home-intro-content-text {
   text-align: justify;
-  font-family: "Open Sans", sans-serif;
-  line-height: 1.6;
+  font-family: "Merriweather", serif;
+  line-height: 1.9;
   font-size: 16px;
   font-weight: 400;
   text-justify: newspaper;
 }
 
 .home-intro-card-content-header {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Merriweather", serif;
   line-height: 1.6;
   font-size: 33px;
 }
 
 .home-article-header {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Merriweather", serif;
   line-height: 1.6;
   font-size: 33px;
   margin-bottom: 0;
@@ -159,12 +187,11 @@
   width: 80%;
   margin-top: 20px !important;
   margin-bottom: 20px !important;
-  font-family: "Open Sans", sans-serif;
-
+  font-family: "Merriweather", serif;
   font-size: 50px !important;
 }
 .home-specializations-header {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Merriweather", serif;
   line-height: 1.6;
   font-size: 33px;
   margin-bottom: 0;
@@ -178,7 +205,7 @@
 
 .cardStyle {
   width: 300px;
-  height: 470px;
+  min-height: 470px;
   margin: 10px !important;
   cursor: pointer;
 }
@@ -198,7 +225,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 20px !important;
 }
 
 .home-article-content {
@@ -210,7 +236,7 @@
 }
 
 @media only screen and (max-width: 935px) {
- .home-intro-card {
+  .home-intro-card {
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -236,7 +262,19 @@
 }
 
 @media only screen and (max-width: 768px) {
- 
+  .jumbo-heading {
+    font-size: 30px !important;
+    width: 80%;
+    margin: 5px;
+    margin-left: 10px;
+  }
+  .jumbo-subtitle {
+    font-size: 15px !important;
+    width: 70%;
+    margin: 5px;
+    margin-left: 10px;
+  }
+
   .home-intro-image {
     width: 100%;
     height: 300px;
@@ -256,7 +294,7 @@
   .ant-card-head {
     font-size: 20px !important;
   }
- 
+
   .home-intro-card-image {
     width: 90%;
     height: 100px;

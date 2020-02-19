@@ -7,12 +7,12 @@ import Layout from "../components/layout"
 import { graphql, navigate } from "gatsby"
 import "../styles/global.scss"
 import { ReduceText } from "../helper"
-import moment from "moment"
 
 export default ({ data }) => {
   const posts = data.fetchPosts.edges.map(edge => {
     let obj = { ...edge.node.frontmatter }
     obj.body = edge.node.rawMarkdownBody
+    obj.slug = edge.node.fields.slug
     return obj
   })
   const specializations =
@@ -34,23 +34,25 @@ export default ({ data }) => {
             className="carousel carousel-slide1"
             style={{ backgroundImage: `url(${homepageData.homejumbo.image})` }}
           >
-            <div className="slide-info">
-              <h1 className="slide-info-heading">
-                {homepageData.homejumbo.title}
-              </h1>
-              <p className="slide-info-paragraph">
-                {homepageData.homejumbo.content}
-              </p>
+            <div className="jumbo-overlay">
+              <div>
+                <h1 className="title is-1 jumbo-heading">
+                  {homepageData.homejumbo.title.toUpperCase()}
+                </h1>
+                <p className="subtitle is-5 jumbo-subtitle">
+                  {homepageData.homejumbo.content}
+                </p>
+              </div>
             </div>
           </div>
         </div>
         <div className="home-content">
-          <div className="home-intro" title="Who we are? and What we do?">
+          <div className="home-intro" title={homepageData.homejumbo.title}>
             <div className="home-intro-card">
               <div className="home-intro-image-container">
                 <img className="home-intro-image" src={homepageData.image} />
-                <p>{homepageData.author}</p>
-                <p>{homepageData.jobtitle}</p>
+                <p className="title is-6">{homepageData.author}</p>
+                <p className="subtitle is-7">{homepageData.jobtitle}</p>
               </div>
               <div className="home-intro-card-content">
                 <h1 className="home-intro-card-content-header">
@@ -81,7 +83,7 @@ export default ({ data }) => {
               <div
                 key={key}
                 class="card cardStyle"
-                onClick={() => openPost(e.title)}
+                onClick={() => openPost(e.slug)}
               >
                 <div class="card-image">
                   <figure class="image is-4by3">
@@ -96,15 +98,10 @@ export default ({ data }) => {
                       </figure>
                     </div>
                     <div class="media-content">
-                      <p
-                        class="title is-6"
-                        style={{ color: "black !important" }}
-                      >
-                        {e.author}
-                      </p>
-                      <p className="subtitle is-6">
-                          {moment(e.date).format("YYYY-MM-DD")}
-                        </p>
+                      <div class="media-content">
+                        <p class="title is-5">{e.title}</p>
+                        <p class="subtitle is-6">{e.author}</p>
+                      </div>
                     </div>
                   </div>
 
@@ -122,7 +119,7 @@ export default ({ data }) => {
               </div>
             ))}
           </div>
-          <Partners partners={partners}/>
+          <Partners partners={partners} />
           <MapArea />
         </div>
       </div>
@@ -131,81 +128,78 @@ export default ({ data }) => {
 }
 
 export const query = graphql`
-         {
-           fetchPartners: allFile(
-             filter: {
-               sourceInstanceName: { eq: "data" }
-               name: { eq: "partners" }
-             }
-           ) {
-             edges {
-               node {
-                 childMarkdownRemark {
-                   frontmatter {
-                     partners
-                   }
-                 }
-               }
-             }
-           }
-           fetchSpecializations: allFile(
-             filter: {
-               sourceInstanceName: { eq: "data" }
-               name: { eq: "specializations" }
-             }
-           ) {
-             edges {
-               node {
-                 childMarkdownRemark {
-                   frontmatter {
-                     specializations
-                   }
-                 }
-               }
-             }
-           }
-           fetchIndex: allFile(
-             filter: {
-               sourceInstanceName: { eq: "data" }
-               name: { eq: "index" }
-             }
-           ) {
-             edges {
-               node {
-                 childMarkdownRemark {
-                   frontmatter {
-                     image
-                     author
-                     content
-                     title
-                     jobtitle
-                     infotext
-                     homejumbo {
-                       image
-                       title
-                       content
-                     }
-                   }
-                 }
-               }
-             }
-           }
-           fetchPosts: allMarkdownRemark(
-             filter: { frontmatter: { key: { eq: "blog" } } }
-           ) {
-             edges {
-               node {
-                 frontmatter {
-                   author
-                   authorimage
-                   date
-                   description
-                   title
-                   thumbnail
-                   tag
-                 }
-               }
-             }
-           }
-         }
-       `
+  {
+    fetchPartners: allFile(
+      filter: { sourceInstanceName: { eq: "data" }, name: { eq: "partners" } }
+    ) {
+      edges {
+        node {
+          childMarkdownRemark {
+            frontmatter {
+              partners
+            }
+          }
+        }
+      }
+    }
+    fetchSpecializations: allFile(
+      filter: {
+        sourceInstanceName: { eq: "data" }
+        name: { eq: "specializations" }
+      }
+    ) {
+      edges {
+        node {
+          childMarkdownRemark {
+            frontmatter {
+              specializations
+            }
+          }
+        }
+      }
+    }
+    fetchIndex: allFile(
+      filter: { sourceInstanceName: { eq: "data" }, name: { eq: "index" } }
+    ) {
+      edges {
+        node {
+          childMarkdownRemark {
+            frontmatter {
+              image
+              author
+              content
+              title
+              jobtitle
+              infotext
+              homejumbo {
+                image
+                title
+                content
+              }
+            }
+          }
+        }
+      }
+    }
+    fetchPosts: allMarkdownRemark(
+      filter: { frontmatter: { key: { eq: "blog" } } }
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            author
+            authorimage
+            date
+            description
+            title
+            thumbnail
+            tag
+          }
+        }
+      }
+    }
+  }
+`
