@@ -11,7 +11,7 @@
 
 .about-jumbo-header {
   margin: 20px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Merriweather", serif;
   font-size: 60px;
   color: white;
   background-color: black;
@@ -32,7 +32,7 @@
   align-items: center;
   align-content: center;
   margin: 20px;
-  width: 200px;
+  width: 260px;
   background-color: transparent;
   cursor: pointer;
 }
@@ -78,17 +78,19 @@
 
 .about-content-text {
   width: 80%;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Merriweather", serif;
   font-size: 19px;
   text-align: justify;
   text-justify: distribute-all-lines;
   color: black;
+  line-height: 1.8;
 }
 
 .about-spec-header {
   font-size: 35px;
   color: #903;
   background-color: gray;
+  font-family: "Merriweather", serif;
 }
 
 .about-first-letter {
@@ -117,7 +119,7 @@
 }
 
 .about-spec-list-item {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Merriweather", serif;
   font-size: 17px;
   color: black;
   line-height: 2;

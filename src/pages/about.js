@@ -38,6 +38,7 @@ export default ({ data }) => {
           <h1 className="about-spec-header about-jumbo-header">
             INTRODUCTION
           </h1>
+          <br/>
           <div
             className="about-content-text"
             dangerouslySetInnerHTML={{ __html: body }}
